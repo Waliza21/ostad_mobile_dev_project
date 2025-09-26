@@ -48,14 +48,14 @@ class MyAssignment extends StatelessWidget {
                 SizedBox(height: 10),
 
                 Padding(
-                  padding: const EdgeInsets.only(left: 5.0),
+                  padding: const EdgeInsets.only(left: 4.0),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
                         padding: EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 4,
+                          horizontal: 7,
+                          vertical: 3,
                         ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
@@ -66,11 +66,11 @@ class MyAssignment extends StatelessWidget {
                           style: TextStyle(fontSize: 11),
                         ),
                       ),
-                      SizedBox(width: 5),
+                      SizedBox(width: 3),
                       Container(
                         padding: EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 4,
+                          horizontal: 7,
+                          vertical: 3,
                         ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
@@ -79,7 +79,8 @@ class MyAssignment extends StatelessWidget {
 
                         child: Row(
                           children: [
-                            Icon(Icons.chair),
+                            Icon(Icons.chair,
+                            size: 12,),
                             Text(
                               list[index]["text2"]!,
                               style: TextStyle(fontSize: 11),
@@ -87,11 +88,11 @@ class MyAssignment extends StatelessWidget {
                           ],
                         ),
                       ),
-                      SizedBox(width: 5),
+                      SizedBox(width: 3),
                       Container(
                         padding: EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 4,
+                          horizontal: 7,
+                          vertical: 3,
                         ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
@@ -99,7 +100,8 @@ class MyAssignment extends StatelessWidget {
                         ),
                         child: Row(
                           children: [
-                            Icon(Icons.punch_clock_outlined),
+                            Icon(Icons.punch_clock_outlined,
+                            size: 12,),
                             Text(
                               list[index]["text3"]!,
                               style: TextStyle(fontSize: 11),
