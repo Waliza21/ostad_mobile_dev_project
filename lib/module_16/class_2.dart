@@ -17,13 +17,61 @@ class _CrudState extends State<Crud> {
     setState(() {});
   }
 
-  productDialog() {
-    showDialog(context: context, builder: (context) => AlertDialog(
-      title: Text('Add Product'),
-      content: Column(children: [
-        
-      ],),
-    ));
+  productDialog({
+    String? id,
+    String? name,
+    String? img,
+    int? qty,
+    int? unitPrice,
+    int? totalPrice,
+    required bool isUpdate,
+  }) {
+    showDialog(
+      context: context,
+      builder:
+          (context) => AlertDialog(
+            title: Text(isUpdate ? 'Update Product' : 'Add Product'),
+            content: Column(
+              children: [
+                TextField(
+                  decoration: InputDecoration(labelText: 'Product Name'),
+                ),
+                SizedBox(height: 10),
+                TextField(
+                  decoration: InputDecoration(labelText: 'Product Image'),
+                ),
+                SizedBox(height: 10),
+
+                TextField(
+                  decoration: InputDecoration(labelText: 'Product Quantity'),
+                ),
+                SizedBox(height: 10),
+
+                TextField(
+                  decoration: InputDecoration(labelText: 'Product Unit Price'),
+                ),
+                SizedBox(height: 10),
+
+                TextField(
+                  decoration: InputDecoration(labelText: 'Product Total Price'),
+                ),
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text('Cancel'),
+                    ),
+                    ElevatedButton(onPressed: () {}, child: Text('Save')),
+                  ],
+                ),
+              ],
+            ),
+          ),
+    );
   }
 
   @override
@@ -72,7 +120,9 @@ class _CrudState extends State<Crud> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          productDialog(isUpdate: false);
+        },
         child: Icon(Icons.add),
       ),
     );
