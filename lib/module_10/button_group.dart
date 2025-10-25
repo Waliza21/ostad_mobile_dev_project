@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 
 class ButtonGroup extends StatelessWidget {
   const ButtonGroup({super.key});
@@ -40,7 +40,7 @@ class ButtonGroup extends StatelessWidget {
                   borderRadius: BorderRadius.circular(
                     10,
                   ), //charpash ektu gol korar jonno
-                ),
+                ),  
               ),
               onPressed: () {},
               child: Text('Submit'),
