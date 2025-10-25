@@ -12,10 +12,24 @@ class Crud extends StatefulWidget {
 class _CrudState extends State<Crud> {
   Productcontroller productcontroller = Productcontroller();
 
+  Future fetchData() async {
+    await productcontroller.fetchProduct();
+    setState(() {});
+  }
+
+  productDialog() {
+    showDialog(context: context, builder: (context) => AlertDialog(
+      title: Text('Add Product'),
+      content: Column(children: [
+        
+      ],),
+    ));
+  }
+
   @override
   void initState() {
     super.initState();
-    productcontroller.fetchProduct();
+    fetchData();
   }
 
   @override
@@ -34,7 +48,27 @@ class _CrudState extends State<Crud> {
         itemCount: productcontroller.products.length,
         itemBuilder: (context, index) {
           var product = productcontroller.products[index];
-          return ProductCard(product: product);
+          return ProductCard(
+            product: product,
+            onDelete: () {
+              productcontroller.deleteProduct(product.sId.toString()).then((
+                value,
+              ) async {
+                if (value) {
+                  await productcontroller.fetchProduct();
+                  setState(() {
+                    ScaffoldMessenger.of(
+                      context,
+                    ).showSnackBar(SnackBar(content: Text('Product Deleted')));
+                  });
+                } else {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text('Something wrong')));
+                }
+              });
+            },
+          );
         },
       ),
       floatingActionButton: FloatingActionButton(

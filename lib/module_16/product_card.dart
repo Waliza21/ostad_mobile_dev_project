@@ -3,9 +3,9 @@ import 'package:ostad_mobile_dev_project/module_16/product_model.dart';
 
 class ProductCard extends StatelessWidget {
   final Data product;
-  
+  final VoidCallback onDelete;
 
-  const ProductCard({super.key,required this.product});
+  const ProductCard({super.key, required this.product,required this.onDelete});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +15,10 @@ class ProductCard extends StatelessWidget {
           SizedBox(
             height: 140,
             child: Image.network(
-              (product.img !=null && product.img.toString().startsWith('https')) ?
-              product.img.toString() : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMj3RryquJkxNjLvvG8N5g2mrbkAWQ0F_zqL7ALIda6-zGCQXZ8kNM5sbE6zjBPn-h9Zo&usqp=CAU'
+              (product.img != null &&
+                      product.img.toString().startsWith('https'))
+                  ? product.img.toString()
+                  : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMj3RryquJkxNjLvvG8N5g2mrbkAWQ0F_zqL7ALIda6-zGCQXZ8kNM5sbE6zjBPn-h9Zo&usqp=CAU',
             ),
           ),
           Text(
@@ -39,7 +41,7 @@ class ProductCard extends StatelessWidget {
                 icon: Icon(Icons.edit, color: Colors.orange),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: onDelete,
                 icon: Icon(Icons.delete, color: Colors.red),
               ),
             ],
